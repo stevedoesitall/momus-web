@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
+	import './mystyles.scss'
+
 	let deities = []
 	onMount(async () => {
 		const response = await fetch('https://api.momus.io/deities/', {
