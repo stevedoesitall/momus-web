@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	let deities = []
 	onMount(async () => {
-		const response = await fetch('http://api.momus.io/deities', {
+		const response = await fetch('https://api.momus.io/deities', {
 			mode: 'cors',
 			headers: {
 				'Access-Control-Allow-Origin': '*',
