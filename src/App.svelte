@@ -9,12 +9,14 @@
 	}
 
 	onMount(async () => {
-		const response = await fetch('https://api.momus.io/deities/', {
-			mode: 'no-cors',
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-			},
-		})
+		const response = await fetch(
+			'https://api.jsonbin.io/b/60c7deb6a8bf076b5f67cd6b',
+			{
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+				},
+			}
+		)
 		deities = await response.json()
 		console.log(deities)
 	})
