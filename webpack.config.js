@@ -43,6 +43,21 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.scss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader'
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				]
+			},
+			{
 				// required to prevent errors from Svelte on Webpack 5+
 				test: /node_modules\/svelte\/.*\.mjs$/,
 				resolve: {
@@ -54,8 +69,8 @@ module.exports = {
 	mode,
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '[name].css'
-		})
+			filename: 'css/mystyles.css'
+		}),
 	],
 	devtool: prod ? false : 'source-map',
 	devServer: {
