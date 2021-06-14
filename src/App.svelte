@@ -8,7 +8,7 @@
 				'Access-Control-Allow-Origin': '*',
 			},
 		})
-		console.log(response)
+		console.log(response.json())
 		deities = await response.json()
 		console.log(deities)
 	})
