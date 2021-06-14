@@ -3,7 +3,7 @@
 	let deities = []
 	onMount(async () => {
 		const response = await fetch('https://api.momus.io/deities/', {
-			// mode: 'no-cors',
+			mode: 'no-cors',
 			headers: {
 				'Access-Control-Allow-Origin': '*',
 			},
