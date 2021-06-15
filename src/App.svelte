@@ -1,25 +1,14 @@
 <script>
 	import { onMount } from 'svelte'
 	import Deities from './components/Deities.svelte'
-	let deities = []
-
-	const getDeities = async () => {
-		const response = await fetch('https://api.momus.io/deities', {
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-			},
-		})
-		deities = await response.json()
-		console.log('Loaded from the Momus API', deities)
-	}
+	import Header from './components/Header.svelte'
 </script>
 
 <main>
-	<div class="content">
-		<h1>Welcome to Momus.io!</h1>
+	<div class="body">
+		<Header />
 
-		<Deities {deities} />
-		<button on:click={getDeities}>Get Deities</button>
+		<Deities />
 	</div>
 </main>
 
@@ -29,11 +18,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		text-transform: lowercase;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {

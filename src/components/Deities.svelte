@@ -1,16 +1,35 @@
 <script>
-	export let deities
-	let newDeity
+	let deities = []
+	let domain
 	let currentNum = deities.length
 
-	const addDeity = () => {
-		deities = [...deities, { name: newDeity, id: deities.length + 1 }]
-		currentNum++
-		console.log(deities)
+	const getDeities = async () => {
+		try {
+			const response = await fetch(
+				`https://api.momus.io/deities?domain=${domain.toLowerCase()}`,
+				{
+					headers: {
+						'Access-Control-Allow-Origin': '*',
+					},
+				}
+			)
+			if (response.status === 204) {
+				deities = []
+				throw new Error('No deities to show!')
+			}
+
+			deities = await response.json()
+
+			console.log('Loaded from the Momus API', deities)
+		} catch (err) {
+			console.log(err)
+		} finally {
+			console.log('Fetching finished')
+		}
 	}
-	$: deities
+
+	$: domain
 	$: currentNum
-	$: newDeity
 </script>
 
 <div class="content">
@@ -22,6 +41,19 @@
 		{/each}
 	</ol>
 
-	<input type="text" bind:value={newDeity} />
-	<button on:click={addDeity}>Add</button>
+	<div id="domain-search" class="search">
+		<label for="domain">Search by Domain: </label><input
+			type="text"
+			bind:value={domain}
+		/>
+	</div>
+
+	<button on:click={getDeities}>Search Deities</button>
 </div>
+
+<style>
+	.search {
+		display: block;
+		padding-bottom: 1em;
+	}
+</style>
