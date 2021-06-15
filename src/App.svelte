@@ -5,15 +5,25 @@
 	let deities = []
 
 	//Note: Need to add API key as an enviornment variable
-	onMount(async () => {
+	// onMount(async () => {
+	// 	const response = await fetch('https://api.momus.io/deities', {
+	// 		headers: {
+	// 			'Access-Control-Allow-Origin': '*',
+	// 		},
+	// 	})
+	// 	deities = [...(await response.json())]
+	// 	console.log('Loaded from the Momus API', deities)
+	// })
+
+	const getDeities = async () => {
 		const response = await fetch('https://api.momus.io/deities', {
 			headers: {
 				'Access-Control-Allow-Origin': '*',
 			},
 		})
-		deities = [...(await response.json())]
+		deities = await response.json()
 		console.log('Loaded from the Momus API', deities)
-	})
+	}
 </script>
 
 <main>
@@ -21,6 +31,7 @@
 		<h1>Welcome to Momus.io!</h1>
 
 		<Deities {deities} />
+		<button on:click={getDeities}>Get Deities</button>
 	</div>
 </main>
 

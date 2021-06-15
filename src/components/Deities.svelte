@@ -15,11 +15,11 @@
 <div class="content">
 	<input type="text" bind:value={newDeity} />
 	<button on:click={addDeity}>Add</button>
-	<ul>
+	<ol class="is-lower-roman">
 		{#each deities as deity (deity.id)}
-			<li class="is-lower-roman">{deity.name}</li>
+			<li>{deity.name}</li>
 		{:else}
 			<p>No deities to show</p>
 		{/each}
-	</ul>
+	</ol>
 </div>
