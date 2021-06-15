@@ -12,12 +12,12 @@
 	$: currentNum
 </script>
 
-<div>
+<div class="content">
 	<input type="text" bind:value={newDeity} />
 	<button on:click={addDeity}>Add</button>
 	<ul>
 		{#each deities as deity (deity.id)}
-			<li>{deity.name}</li>
+			<li class="is-lower-roman">{deity.name}</li>
 		{:else}
 			<p>No deities to show</p>
 		{/each}
