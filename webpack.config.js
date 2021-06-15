@@ -1,8 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-
+const webpack = require('webpack');
+const includeEnv = require('svelte-environment-variables');
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: {
@@ -71,6 +73,9 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: 'global.css'
 		}),
+		new webpack.DefinePlugin({
+			...includeEnv(),
+		})
 	],
 	devtool: prod ? false : 'source-map',
 	devServer: {

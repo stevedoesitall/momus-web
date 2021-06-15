@@ -1,19 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import Deities from './components/Deities.svelte'
-
 	let deities = []
-
-	//Note: Need to add API key as an enviornment variable
-	// onMount(async () => {
-	// 	const response = await fetch('https://api.momus.io/deities', {
-	// 		headers: {
-	// 			'Access-Control-Allow-Origin': '*',
-	// 		},
-	// 	})
-	// 	deities = [...(await response.json())]
-	// 	console.log('Loaded from the Momus API', deities)
-	// })
 
 	const getDeities = async () => {
 		const response = await fetch('https://api.momus.io/deities', {
