@@ -69,7 +69,7 @@ module.exports = {
 	mode,
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'css/mystyles.css'
+			filename: 'global.css'
 		}),
 	],
 	devtool: prod ? false : 'source-map',

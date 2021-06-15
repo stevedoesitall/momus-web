@@ -12,9 +12,13 @@
 	}
 
 	const addPassword = () => {
-		console.log('Saving')
-		console.log(allPasswords)
-		allPasswords.push(currentPassword)
+		if (passwordValidity === 'valid') {
+			allPasswords = [...allPasswords, currentPassword]
+		}
+	}
+
+	const removePassword = (key) => {
+		allPasswords = allPasswords.filter((password) => password !== key)
 	}
 
 	$: allPasswords
@@ -32,8 +36,8 @@
 	{/if}
 
 	<ul>
-		{#each allPasswords as password (password)}
-			<li>{password}</li>
+		{#each allPasswords as password, i}
+			<li on:click={removePassword.bind(this, password)}>{password}</li>
 		{:else}
 			<p>No passwords to show</p>
 		{/each}

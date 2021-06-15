@@ -1,13 +1,8 @@
 <script>
 	import { onMount } from 'svelte'
-	import Password from './Password.svelte'
+	import Deities from './components/Deities.svelte'
 
 	let deities = []
-	let done = false
-
-	const addContact = () => {
-		done = !done
-	}
 
 	//Note: Need to add API key as an enviornment variable
 	onMount(async () => {
@@ -16,29 +11,16 @@
 				'Access-Control-Allow-Origin': '*',
 			},
 		})
-		deities = await response.json()
+		deities = [...(await response.json())]
 		console.log('Loaded from the Momus API', deities)
 	})
 </script>
 
 <main>
 	<div class="content">
-		<Password />
 		<h1>Welcome to Momus.io!</h1>
-		<h3>actual content coming soon...</h3>
 
-		<button on:click={addContact}>Add Contact Card</button>
-		{#if done}
-			<p>show me</p>
-		{/if}
-		{#each deities as deity, index (deity.id)}
-			<p class="is-small">{index + 1}. {deity.name}</p>
-			<ol class="is-lower-roman">
-				{#each deity.domain as domain}
-					<li>{domain}</li>
-				{/each}
-			</ol>
-		{/each}
+		<Deities {deities} />
 	</div>
 </main>
 
