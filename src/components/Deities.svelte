@@ -6,7 +6,7 @@
 	const getDeities = async () => {
 		try {
 			const response = await fetch(
-				`https://api.momus.io/deities?domain=${domain.toLowerCase()}`,
+				`https://api.momus.io/deities?domain=${domain}`,
 				{
 					headers: {
 						'Access-Control-Allow-Origin': '*',
@@ -25,6 +25,7 @@
 			console.log(err)
 		} finally {
 			console.log('Fetching finished')
+			domain = ''
 		}
 	}
 
@@ -36,6 +37,11 @@
 	<ol class="is-lower-roman">
 		{#each deities as deity (deity.id)}
 			<li>{deity.name}</li>
+			<ul>
+				{#each deity.domain as domain (domain)}
+					<li>{domain}</li>
+				{/each}
+			</ul>
 		{:else}
 			<p>No deities to show</p>
 		{/each}
@@ -48,7 +54,7 @@
 		/>
 	</div>
 
-	<button on:click={getDeities}>Search Deities</button>
+	<button disabled={!domain} on:click={getDeities}>Search Deities</button>
 </div>
 
 <style>
