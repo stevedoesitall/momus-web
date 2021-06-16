@@ -34,12 +34,12 @@
 </script>
 
 <div class="content">
-	<ol class="is-lower-roman">
+	<ol class="is-family-secondary is-lower-roman">
 		{#each deities as deity (deity.id)}
-			<li>{deity.name}</li>
+			<li class="is-family-secondary">{deity.name}</li>
 			<ul>
 				{#each deity.domain as domain (domain)}
-					<li>{domain}</li>
+					<li class="is-family-secondary">{domain}</li>
 				{/each}
 			</ul>
 		{:else}
@@ -48,13 +48,17 @@
 	</ol>
 
 	<div id="domain-search" class="search">
-		<label for="domain">Search by Domain: </label><input
-			type="text"
-			bind:value={domain}
-		/>
+		<label for="domain">
+			<span class="is-family-secondary">Search by Domain:</span>
+		</label>
+		<input type="text" bind:value={domain} />
 	</div>
 
-	<button disabled={!domain} on:click={getDeities}>Search Deities</button>
+	<button
+		class="has-text-weight-bold button is-primary"
+		disabled={!domain}
+		on:click={getDeities}>Search Deities</button
+	>
 </div>
 
 <style>
