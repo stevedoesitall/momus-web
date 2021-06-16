@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte'
+	// import { onMount } from 'svelte'
 	import Deities from './components/Deities.svelte'
 	import Header from './components/Header.svelte'
 </script>
