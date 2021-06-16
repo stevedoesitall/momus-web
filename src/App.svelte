@@ -1,11 +1,15 @@
 <script>
 	import { onMount } from 'svelte'
+	import { Router } from '@roxi/routify'
+	import { routes } from '../.routify/routes'
+
 	import Deities from './components/Deities.svelte'
 	import Header from './components/Header.svelte'
 </script>
 
 <main>
 	<div class="body">
+		<Router {routes} />
 		<Header />
 
 		<Deities />

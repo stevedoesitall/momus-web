@@ -1,7 +1,6 @@
 <script>
 	let deities = []
 	let domain
-	let currentNum = deities.length
 
 	const getDeities = async () => {
 		try {
@@ -18,6 +17,11 @@
 				throw new Error('No deities to show!')
 			}
 
+			if (response.status === 404) {
+				deities = []
+				throw new Error('Something went wrong. Please try again later.')
+			}
+
 			deities = await response.json()
 
 			console.log('Loaded from the Momus API', deities)
@@ -28,9 +32,6 @@
 			domain = ''
 		}
 	}
-
-	$: domain
-	$: currentNum
 </script>
 
 <div class="content">
@@ -57,8 +58,10 @@
 	<button
 		class="has-text-weight-bold button is-primary"
 		disabled={!domain}
-		on:click={getDeities}>Search Deities</button
+		on:click={getDeities}
 	>
+		Search Deities
+	</button>
 </div>
 
 <style>
