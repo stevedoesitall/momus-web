@@ -22,8 +22,11 @@
     "dev": "webpack serve --content-base public --port 5000",
     "git": "git init && git status && git add ."
   },
-  "description": "This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template-webpack.",
+  "description": "SPA for Momus.io.",
   "main": "webpack.config.js",
-  "author": "",
-  "license": "ISC"
+  "author": "Steve Giordano",
+  "license": "ISC",
+  "dependencies": {
+    "page": "^1.11.6"
+  }
 }
