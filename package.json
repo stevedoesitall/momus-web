@@ -28,8 +28,6 @@
   "author": "Steve Giordano",
   "license": "ISC",
   "dependencies": {
-    "page": "^1.11.6",
-    "sirv": "^1.0.12",
-    "sirv-cli": "^1.0.12"
+    "page": "^1.11.6"
   }
 }

@@ -50,7 +50,6 @@
 </script>
 
 <div class="content">
-	<a href="/about">about</a>
 	<Header />
 	<ol class="is-family-secondary is-lower-roman">
 		{#each deities as deity (deity.id)}
@@ -74,7 +73,6 @@
 	</div>
 
 	<Button {domain} {getDeities} />
-	<svelte:component this={current} />
 </div>
 
 <style>
