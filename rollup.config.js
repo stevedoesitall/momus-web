@@ -53,7 +53,8 @@ export default {
 				  scss: {
 					includePaths: [
 					  'node_modules',
-					  'src'
+					  'src',
+					  'pages'
 					]
 				  },
 				  postcss: {
