@@ -1,14 +1,32 @@
 <script>
-	import page from 'page'
+	import router from 'page'
 
 	import Header from './components/UI/Header.svelte'
 	import Button from './components/UI/Button.svelte'
 	import Deity from './components/Deities/Deity.svelte'
 
-	let current
+	import Home from './pages/Home.svelte'
+	import About from './pages/About.svelte'
+	import Error from './pages/Error.svelte'
 
-	page('/about', () => (current = Header))
-	page.start()
+	let page
+	let params
+
+	router('/', () => (page = Home))
+	router('/about', () => (page = About))
+
+	router(
+		'/deity:id',
+		(ctx, next) => {
+			params = ctx.parmas
+			next()
+		},
+		() => (page = Deity)
+	)
+
+	router('/*', () => (page = Error))
+
+	router.start()
 
 	let deities = []
 	let domain
@@ -51,6 +69,8 @@
 
 <div class="content">
 	<Header />
+	<svelte:component this={page} {params} />
+
 	<ol class="is-family-secondary is-lower-roman">
 		{#each deities as deity (deity.id)}
 			<Deity
