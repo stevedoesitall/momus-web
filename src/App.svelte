@@ -74,6 +74,7 @@
 	</div>
 
 	<Button {domain} {getDeities} />
+	<svelte:component this={current} />
 </div>
 
 <style>
