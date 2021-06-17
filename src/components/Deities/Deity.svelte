@@ -4,6 +4,7 @@
 	export let id
 	export let domains
 
+	const url = '/deity/' + id
 	const dispatch = createEventDispatcher()
 
 	const saved = () => {
@@ -16,7 +17,7 @@
 </script>
 
 <div class="content">
-	<li class="is-family-secondary">{name}</li>
+	<li class="is-family-secondary"><a href={url}>{name}</a></li>
 	<ul>
 		{#each domains as domain (domain + '-' + id)}
 			<li class="is-family-secondary">{domain}</li>

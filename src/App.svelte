@@ -1,11 +1,10 @@
 <script>
 	import router from 'page'
 
-	import Deity from './components/Deities/Deity.svelte'
-
 	import Home from './pages/Home.svelte'
 	import About from './pages/About.svelte'
 	import Error from './pages/Error.svelte'
+	import Deity from './pages/Deity.svelte'
 
 	let page
 	let params
@@ -14,9 +13,9 @@
 	router('/about', () => (page = About))
 
 	router(
-		'/deity:id',
+		'/deity/:id',
 		(ctx, next) => {
-			params = ctx.parmas
+			params = ctx.params
 			next()
 		},
 		() => (page = Deity)
@@ -32,6 +31,8 @@
 		<Home />
 	{:else if page === About}
 		<About />
+	{:else if page === Deity}
+		<Deity {params} />
 	{:else}
 		<Error />
 	{/if}

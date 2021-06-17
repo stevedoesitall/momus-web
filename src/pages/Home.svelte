@@ -35,6 +35,7 @@
 				} else if (response.status === 404) {
 					errMsg = 'Something went wrong. Please try again later.'
 				}
+				console.log(errMsg)
 				throw new Error(errMsg)
 			}
 
