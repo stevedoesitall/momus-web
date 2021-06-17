@@ -18,7 +18,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack && sirv public --single",
+    "start": "sirv public --single",
+    "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack serve --content-base public --port 5000",
     "git": "git init && git status && git add ."
   },
