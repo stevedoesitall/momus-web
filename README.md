@@ -2,7 +2,11 @@
 
 ## Purpose
 
-SPA serving data from the api.momus.io endpoint
+SPA serving data from the `https://api.momus.io` endpoint
+
+`https://momus.io`
+
+See the API repo here: `https://github.com/stevedoesitall/momus-api`
 
 ## Stack
 
