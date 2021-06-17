@@ -4,6 +4,7 @@
 	import Deity from '../components/Deities/Deity.svelte'
 	import Error from './Error.svelte'
 	const apiKey = __myapp.env.API_KEY
+
 	let deities = []
 	let domain
 
@@ -22,7 +23,7 @@
 				{
 					headers: {
 						'Access-Control-Allow-Origin': '*',
-						Authorization: apiKey,
+						// Authorization: apiKey,
 					},
 				}
 			)
