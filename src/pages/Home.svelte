@@ -22,7 +22,7 @@
 				{
 					headers: {
 						'Access-Control-Allow-Origin': '*',
-						Authentication: apiKey,
+						Authorization: apiKey,
 					},
 				}
 			)
