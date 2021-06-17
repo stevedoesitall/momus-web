@@ -68,7 +68,7 @@
 </script>
 
 <div class="content">
-	<Header />
+	<!-- <Header /> -->
 	<svelte:component this={page} {params} />
 
 	<ol class="is-family-secondary is-lower-roman">

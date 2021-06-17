@@ -8,5 +8,5 @@ SPA serving data from the api.momus.io endpoint
 
 - Svelte
 - Bulma
-- Webpack
+- Rollup
 - Deployed via Netlify
