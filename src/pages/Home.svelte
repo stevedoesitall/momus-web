@@ -2,12 +2,17 @@
 	import Header from '../components/UI/Header.svelte'
 	import Button from '../components/UI/Button.svelte'
 	import Deity from '../components/Deities/Deity.svelte'
-
+	import Error from './Error.svelte'
+	const apiKey = __myapp.env.API_KEY
 	let deities = []
 	let domain
 
 	const saved = (event) => {
 		console.log(event)
+	}
+
+	const clearDeities = () => {
+		deities = []
 	}
 
 	const getDeities = async () => {
@@ -17,17 +22,19 @@
 				{
 					headers: {
 						'Access-Control-Allow-Origin': '*',
+						Authentication: apiKey,
 					},
 				}
 			)
-			if (response.status === 204) {
+			if (response.status > 200) {
+				let errMsg
 				deities = []
-				throw new Error('No deities to show!')
-			}
-
-			if (response.status === 404) {
-				deities = []
-				throw new Error('Something went wrong. Please try again later.')
+				if (response.status === 204) {
+					errMsg = 'No deities to show!'
+				} else if (response.status === 404) {
+					errMsg = 'Something went wrong. Please try again later.'
+				}
+				throw new Error(errMsg)
 			}
 
 			deities = await response.json()
@@ -69,7 +76,12 @@
 		<input type="text" bind:value={domain} />
 	</div>
 
-	<Button {domain} {getDeities} />
+	<Button disabled={!domain} buttonAction={getDeities} title="Search Deities" />
+	<Button
+		disabled={!deities.length}
+		buttonAction={clearDeities}
+		title="Clear"
+	/>
 </div>
 
 <style>

@@ -1,8 +1,6 @@
 <script>
 	import router from 'page'
 
-	import Header from './components/UI/Header.svelte'
-	import Button from './components/UI/Button.svelte'
 	import Deity from './components/Deities/Deity.svelte'
 
 	import Home from './pages/Home.svelte'

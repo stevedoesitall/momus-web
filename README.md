@@ -10,7 +10,8 @@ See the API repo here: `https://github.com/stevedoesitall/momus-api`
 
 ## Stack
 
-- Svelte
+- Svelte.js
 - Bulma
 - Rollup
+- Page.js
 - Deployed via Netlify

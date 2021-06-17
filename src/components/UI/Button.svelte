@@ -1,14 +1,15 @@
 <script>
-	export let domain
-	export let getDeities
+	export let disabled
+	export let buttonAction
+	export let title
 </script>
 
 <div class="content">
 	<button
 		class="has-text-weight-bold button is-primary"
-		disabled={!domain}
-		on:click={getDeities}
+		{disabled}
+		on:click={buttonAction}
 	>
-		Search Deities
+		{title}
 	</button>
 </div>
