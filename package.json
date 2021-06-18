@@ -31,7 +31,7 @@
   "dependencies": {
     "node-sass": "^6.0.0",
     "page": "^1.11.6",
-    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-postcss": "^2.4.1",
     "sirv-cli": "^1.0.0"
   }
 }
