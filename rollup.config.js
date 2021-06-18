@@ -8,7 +8,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import scss from 'rollup-plugin-scss';
 import { config } from 'dotenv';
 import replace from '@rollup/plugin-replace';
-import postcss from 'rollup-plugin-postcss'
+import postcss from 'postcss'
 
 const production = !process.env.ROLLUP_WATCH;
 
