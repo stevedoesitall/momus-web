@@ -5,41 +5,17 @@
 	let deity = {}
 	let domain = []
 
-	import { onMount } from 'svelte'
-	onMount(async () => {
-		try {
-			const response = await fetch(
-				`https://api.momus.io/deities/${params.id}`,
-				{
-					headers: {
-						'Access-Control-Allow-Origin': '*',
-						// Authorization: apiKey,
-					},
-				}
-			)
-			if (response.status > 200) {
-				let errMsg
-				if (response.status === 204) {
-					errMsg = 'No deity to show!'
-				} else if (response.status === 404) {
-					errMsg = 'Something went wrong. Please try again later.'
-				}
-				console.log(errMsg)
-				throw new Error(errMsg)
-			}
+	import { onMount } from "svelte"
+	import { getById } from "../apis/get-deities"
 
-			deity = await response.json()
-			domain = deity.domain
-			console.log('Loaded from the Momus API', deity)
-		} catch (err) {
-			console.log(err)
-		} finally {
-			console.log('Fetching finished')
-		}
+	onMount(async () => {
+		deity = await getById(params.id)
+		domain = deity.domain
 	})
 </script>
 
-<div class="content">
+<div class="content has-text-centered">
+	<p><a href="/">Back</a></p>
 	<h1 class="is-family-sans-serif is-lowercase has-text-weight-bold grey-dark">
 		{deity.name}
 	</h1>

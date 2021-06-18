@@ -8,6 +8,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import scss from 'rollup-plugin-scss';
 import { config } from 'dotenv';
 import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -43,6 +44,14 @@ export default {
 	},
 	plugins: [
 		scss(),
+		postcss(),
+		replace({
+			process: JSON.stringify({
+				env: {
+					API_KEY: production ? process.env.API_KEY : config().parsed.API_KEY,
+				}
+			})
+		}),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -57,26 +66,12 @@ export default {
 					  'pages'
 					]
 				  },
-				  postcss: {
-					plugins: [
-					//   require('autoprefixer')
-					]
-				  }
 				}
 			})
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
-		replace({
-			// stringify the object       
-			__myapp: JSON.stringify({
-			  env: {
-				isProd: production,
-				...config().parsed // attached the .env config
-			  }
-			}),
-		  }),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
