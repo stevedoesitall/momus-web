@@ -1,8 +1,8 @@
-import { deitiesEndpoint, HEADERS } from "../config"
+import { apiKey, deitiesEndpoint, HEADERS } from "../config"
 
 export const getDeities = async (domain) => {
     let deities = []
-    const endpoint = domain ? `${deitiesEndpoint}&domain=${domain}` : deitiesEndpoint
+    const endpoint = domain ? `${deitiesEndpoint}?api_key=${apiKey}&domain=${domain}` : `${deitiesEndpoint}?api_key=${apiKey}`
     try {
         const response = await fetch(endpoint,
             {
@@ -31,7 +31,7 @@ export const getById = async (id) => {
     let deity
     try {
         const response = await fetch(
-            `${deitiesEndpoint}/${id}`,
+            `${deitiesEndpoint}/${id}?api_key=${apiKey}`,
             {
                 headers: HEADERS
             }
