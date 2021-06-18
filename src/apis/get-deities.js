@@ -1,5 +1,6 @@
 import { apiKey, deitiesEndpoint } from '../config'
 
+//NOTE: Make this "true" authorization
 const HEADERS = {
     'Access-Control-Allow-Origin': '*',
     Authorization: apiKey
