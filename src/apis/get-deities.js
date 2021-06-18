@@ -1,14 +1,8 @@
-import { apiKey, deitiesEndpoint } from "../config"
-
-//NOTE: Make this "true" authorization
-const HEADERS = {
-    "Access-Control-Allow-Origin": "*",
-    Authorization: apiKey
-}
+import { deitiesEndpoint, HEADERS } from "../config"
 
 export const getDeities = async (domain) => {
     let deities = []
-    const endpoint = domain ? `${deitiesEndpoint}?domain=${domain}` : deitiesEndpoint
+    const endpoint = domain ? `${deitiesEndpoint}&domain=${domain}` : deitiesEndpoint
     try {
         const response = await fetch(endpoint,
             {
@@ -17,7 +11,7 @@ export const getDeities = async (domain) => {
         )
 
         if (response.status === 204) {
-            throw new Error("No deities to show!")
+            throw new Error("No deity matches this domain.")
         }
 
         deities = await response.json()
@@ -44,7 +38,7 @@ export const getById = async (id) => {
         )
 
         if (response.status === 204) {
-            throw new Error("No deities to show!!")
+            throw new Error("No deity matches this ID.")
         }
 
         deity = await response.json()
