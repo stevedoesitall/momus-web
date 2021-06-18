@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const BASE_URL = "https://api.momus.io"
 const apiKey = process.env.API_KEY
 

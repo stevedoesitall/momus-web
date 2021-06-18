@@ -1,7 +1,8 @@
 import { apiKey, deitiesEndpoint } from '../config'
 
 const HEADERS = {
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    Authorization: apiKey
 }
 
 export const getDeities = async (domain) => {
