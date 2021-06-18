@@ -1,8 +1,8 @@
-import { apiKey, deitiesEndpoint } from '../config'
+import { apiKey, deitiesEndpoint } from "../config"
 
 //NOTE: Make this "true" authorization
 const HEADERS = {
-    'Access-Control-Allow-Origin': '*',
+    "Access-Control-Allow-Origin": "*",
     Authorization: apiKey
 }
 
@@ -17,7 +17,7 @@ export const getDeities = async (domain) => {
         )
 
         if (response.status === 204) {
-            throw new Error('No deities to show!')
+            throw new Error("No deities to show!")
         }
 
         deities = await response.json()
@@ -29,7 +29,7 @@ export const getDeities = async (domain) => {
         return deities
 
     } finally {
-        console.log('Fetching finished')
+        console.log("Fetching finished")
     }
 }
 
@@ -44,7 +44,7 @@ export const getById = async (id) => {
         )
 
         if (response.status === 204) {
-            throw new Error('No deities to show!!')
+            throw new Error("No deities to show!!")
         }
 
         deity = await response.json()
@@ -53,6 +53,6 @@ export const getById = async (id) => {
     } catch (err) {
         console.log(err)
     } finally {
-        console.log('Fetching finished')
+        console.log("Fetching finished")
     }
 }
