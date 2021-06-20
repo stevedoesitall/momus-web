@@ -10,7 +10,7 @@
 		I've been saying for years that I wanted to create a portfolio site - and
 		really just something to test my coding skills in general. Ostensibly, it's
 		an SPA and API for accessing data on mythological figures, but actually
-		loading that into my databse is going to take some time, so bear withn me.
+		loading that into my database is going to take some time, so bear with me.
 	</p>
 	<p>
 		In terms of tech stack, I built this using Svelte and Bulma for the

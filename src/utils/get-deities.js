@@ -27,7 +27,7 @@ export const getDeities = async (domain) => {
     }
 }
 
-export const getById = async (id) => {
+export const getDeityById = async (id) => {
     let deity
     try {
         const response = await fetch(
