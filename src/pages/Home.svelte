@@ -3,7 +3,7 @@
 	import Button from "../components/UI/Button.svelte"
 	import Search from "../components/UI/Search.svelte"
 	import Info from "../components/Deities/Info.svelte"
-	import { getDeities } from "../apis/get-deities"
+	import { getDeities } from "../utils/get-deities"
 
 	let deities = []
 	let domain

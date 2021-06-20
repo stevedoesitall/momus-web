@@ -26,7 +26,7 @@
 	router.start()
 </script>
 
-<div class="content">
+<div class="content has-text-weight-semibold">
 	{#if page === Home}
 		<Home />
 	{:else if page === About}

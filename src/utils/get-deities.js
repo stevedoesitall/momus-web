@@ -38,6 +38,7 @@ export const getById = async (id) => {
         )
 
         if (response.status === 204) {
+            //Need to set up an auto-redirect
             throw new Error("No deity matches this ID.")
         }
 
@@ -46,6 +47,7 @@ export const getById = async (id) => {
 
     } catch (err) {
         console.log(err)
+        
     } finally {
         console.log("Fetching finished")
     }
