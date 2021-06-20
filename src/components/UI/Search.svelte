@@ -13,7 +13,7 @@
 <div class="content">
 	<div id="domain-search" class="search">
 		<label for="domain">
-			<span class="is-family-secondary">Search by Domain:</span>
+			<span class="is-family-secondary">Your value:</span>
 		</label>
 		<input type="text" bind:value={domain} />
 	</div>
