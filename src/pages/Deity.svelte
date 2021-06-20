@@ -9,10 +9,18 @@
 	let loaded = false
 	let failed = false
 
+	const autoRedirect = () => {
+		window.location.href = "/"
+	}
+
 	onMount(async () => {
 		deity = await getDeityById(params.id)
 
 		if (!deity) {
+			setTimeout(() => {
+				autoRedirect()
+			}, 1000)
+
 			return (failed = true)
 		}
 
@@ -26,7 +34,7 @@
 
 	{#if failed}
 		<h1 class="is-family-sans-serif has-text-weight-bold grey-dark">
-			It must be Ragnarok since this doesn't exist!
+			No deity found with this ID.
 		</h1>
 	{:else if !loaded}
 		<progress class="progress is-small is-primary" max="50">15%</progress>
