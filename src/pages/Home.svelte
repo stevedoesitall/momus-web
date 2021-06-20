@@ -7,9 +7,13 @@
 
 	let deities = []
 	let domain
+	let message = "Search by Domain"
 
 	const handleGetDeities = async () => {
 		deities = await getDeities(domain)
+		if (!deities.length) {
+			message = "No deities found"
+		}
 		domain = ""
 	}
 
@@ -23,6 +27,7 @@
 
 	const clearDeities = () => {
 		deities = []
+		message = "Search by Domain"
 	}
 
 	$: if (domain) {
@@ -43,17 +48,13 @@
 				domains={deity.domain}
 			/>
 		{:else}
-			<p>No deities to show</p>
+			<p>{message}</p>
 		{/each}
 	</ol>
 
 	<Search {domain} on:domainSearch={handleSearch} />
 
-	<Button
-		disabled={!domain}
-		buttonAction={handleGetDeities}
-		title="Search Deities"
-	/>
+	<Button disabled={!domain} buttonAction={handleGetDeities} title="Search" />
 	<Button
 		disabled={!deities.length}
 		buttonAction={clearDeities}
