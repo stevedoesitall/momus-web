@@ -9,6 +9,13 @@
 	let page
 	let params
 
+	const updateTitle = () => {
+		const isDev = window.location.href.indexOf("localhost") > 0
+		if (isDev) {
+			document.getElementById("title").innerHTML = "Momus DEV"
+		}
+	}
+
 	router("/", () => (page = Home))
 	router("/about", () => (page = About))
 
@@ -24,6 +31,8 @@
 	router("/*", () => (page = Error))
 
 	router.start()
+
+	updateTitle()
 </script>
 
 <div class="content has-text-weight-semibold">
