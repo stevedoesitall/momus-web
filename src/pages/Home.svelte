@@ -7,7 +7,13 @@
 
 	let deities = []
 	let domain
+	let allDomains = []
+	let selectedDomain
 	let message = "Search by Domain"
+	;(async () => {
+		const results = await getDeities()
+		allDomains = results.domains
+	})()
 
 	const handleGetDeities = async () => {
 		deities = await getDeities(domain)
@@ -33,6 +39,10 @@
 	$: if (domain) {
 		console.log("Current domain is", domain)
 	}
+
+	$: if (selectedDomain) {
+		console.log("Current domain is", selectedDomain)
+	}
 </script>
 
 <div class="content has-text-centered">
@@ -52,7 +62,7 @@
 		{/each}
 	</ol>
 
-	<Search {domain} on:domainSearch={handleSearch} />
+	<Search {allDomains} on:domainSearch={handleSearch} />
 
 	<Button disabled={!domain} buttonAction={handleGetDeities} title="Search" />
 	<Button

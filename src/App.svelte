@@ -9,13 +9,6 @@
 	let page
 	let params
 
-	const updateTitle = () => {
-		const isDev = window.location.href.indexOf("localhost") > 0
-		if (isDev) {
-			document.getElementById("title").innerHTML = "Momus DEV"
-		}
-	}
-
 	router("/", () => (page = Home))
 	router("/about", () => (page = About))
 
@@ -31,8 +24,13 @@
 	router("/*", () => (page = Error))
 
 	router.start()
-
-	updateTitle()
+	;(() => {
+		const regex = /(https{0,1}:\/\/)?localhost:[0-9]{4}/
+		const isDev = window.location.href.search(regex) !== -1
+		if (isDev) {
+			document.getElementById("title").innerHTML = "Momus DEV"
+		}
+	})()
 </script>
 
 <div class="content has-text-weight-semibold">
