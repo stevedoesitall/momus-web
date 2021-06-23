@@ -6,12 +6,12 @@
 
 // Set your brand colors
 $purple: #5a32a3;
-$blue: #32a3a3;
-$brown: #757763;
+$blue: #3254a3;
+$brown: #a37f32;
 $pink: #a86e9d;
 $grey-dark: #353840;
 $grey-light: #a19c9c;
-$green: #6ea879;
+$green: #7ba332;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 
@@ -38,8 +38,7 @@ $input-border-color: transparent;
 $input-shadow: none;
 
 // Import only what you need from Bulma
-@import "../node_modules/bulma/sass/helpers/typography.sass";
-@import "../node_modules/bulma/sass/helpers/spacing.sass";
+@import "../node_modules/bulma/sass/helpers/_all.sass";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/components/_all.sass";

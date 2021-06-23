@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from "svelte"
+	import Button from "../components/UI/Button.svelte"
 	import { getDeityById } from "../utils/get-deities"
 
 	export let params
@@ -30,8 +31,6 @@
 </script>
 
 <div class="content has-text-centered pt-5">
-	<p><a href="/">Back</a></p>
-
 	{#if failed}
 		<h1 class="is-family-sans-serif has-text-weight-bold grey-dark">
 			No deity found with this ID.
@@ -48,4 +47,10 @@
 			<p>{domain}</p>
 		{/each}
 	{/if}
+
+	<Button
+		disabled={false}
+		buttonAction={() => (window.location.href = "/")}
+		title="Back"
+	/>
 </div>

@@ -27,10 +27,6 @@
 		domain = event.detail.domain
 	}
 
-	const saved = (event) => {
-		console.log(event)
-	}
-
 	const clearDeities = () => {
 		deities = []
 		message = "Search by Domain"
@@ -50,13 +46,7 @@
 
 	<ol class="is-family-secondary is-lower-roman">
 		{#each deities as deity (deity.id)}
-			<Info
-				on:saved={saved}
-				on:learn-more={() => alert("Learn More!")}
-				name={deity.name}
-				id={deity.id}
-				domains={deity.domain}
-			/>
+			<Info name={deity.name} id={deity.id} />
 		{:else}
 			<p>{message}</p>
 		{/each}
@@ -64,7 +54,11 @@
 
 	<Search {allDomains} on:domainSearch={handleSearch} />
 
-	<Button disabled={!domain} buttonAction={handleGetDeities} title="Search" />
+	<Button
+		disabled={domain === "Domain"}
+		buttonAction={handleGetDeities}
+		title="Search"
+	/>
 	<Button
 		disabled={!deities.length}
 		buttonAction={clearDeities}

@@ -1,5 +1,6 @@
 <script>
 	import router from "page"
+	import Nav from "./components/UI/Nav.svelte"
 
 	import Home from "./pages/Home.svelte"
 	import About from "./pages/About.svelte"
@@ -34,6 +35,7 @@
 </script>
 
 <div class="content has-text-weight-semibold">
+	<Nav />
 	{#if page === Home}
 		<Home />
 	{:else if page === About}
