@@ -2,14 +2,18 @@
 	import Header from "../components/UI/Header.svelte"
 	import Button from "../components/UI/Button.svelte"
 	import Search from "../components/UI/Search.svelte"
-	import Info from "../components/Deities/Info.svelte"
+	import DeityDetail from "../components/Deities/DeityDetail.svelte"
+	import currentDeity from "../store"
+
 	import { getDeities } from "../utils/get-deities"
 
+	//Probably need to clean this up
 	let deities = []
 	let domain
 	let allDomains = []
 	let selectedDomain
 	let message = "Search by Domain"
+
 	;(async () => {
 		const results = await getDeities()
 		allDomains = results.domains
@@ -43,10 +47,13 @@
 
 <div class="content has-text-centered">
 	<Header />
-
+	{#if $currentDeity}
+		<p>Last deity was {$currentDeity}</p>
+	{/if}
+	<!-- Let's move this -->
 	<ol class="is-family-secondary is-lower-roman">
 		{#each deities as deity (deity.id)}
-			<Info name={deity.name} id={deity.id} />
+			<DeityDetail name={deity.name} id={deity.id} />
 		{:else}
 			<p>{message}</p>
 		{/each}

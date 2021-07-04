@@ -1,6 +1,7 @@
 <script>
 	import router from "page"
 	import Nav from "./components/UI/Nav.svelte"
+	import Footer from "./components/UI/Footer.svelte"
 
 	import Home from "./pages/Home.svelte"
 	import About from "./pages/About.svelte"
@@ -45,4 +46,5 @@
 	{:else}
 		<Error />
 	{/if}
+	<Footer />
 </div>

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte"
-	import Button from "../components/UI/Button.svelte"
+	import currentDeity from "../store"
 	import { getDeityById } from "../utils/get-deities"
 
 	export let params
@@ -16,7 +16,8 @@
 
 	onMount(async () => {
 		deity = await getDeityById(params.id)
-
+		currentDeity.set(deity.name)
+		console.log(currentDeity)
 		if (!deity) {
 			setTimeout(() => {
 				autoRedirect()
@@ -48,9 +49,5 @@
 		{/each}
 	{/if}
 
-	<Button
-		disabled={false}
-		buttonAction={() => (window.location.href = "/")}
-		title="Back"
-	/>
+	<p><a href="/">Back</a></p>
 </div>
